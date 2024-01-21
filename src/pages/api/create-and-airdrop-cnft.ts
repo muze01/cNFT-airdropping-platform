@@ -44,7 +44,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
                     creator_wallet: process.env.NEXT_PUBLIC_KEY,
                     metadata_uri: metadata_uri,
                     merkle_tree: merkle_tree,
-                    // collection_address: collection_address,
                     max_supply: max_supply,
                     receiver: holder,
                 };
@@ -62,12 +61,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
                         data: JSON.stringify(raw),
                     })
                     .then((res) => {
-                        //console.dir(res.data,{depth:null});
                         if (res.data.success === true) response_from_api = res.data;
                         else throw new Error('MINT_ERROR');
                     })
                     .catch((error) => {
-                        //console.dir(error.message,{depth:null});
                         if (error.message === 'MINT_ERROR') throw new Error('MINT_ERROR');
                         else throw error;
                     });
@@ -77,7 +74,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
                     response_from_api.result.encoded_transaction,
                     [process.env.NEXT_PRIVATE_KEY ?? '']
                 );
-                // console.log("Recovred",recoveredTxn);
                 if (recoveredTxn) {
                     confirmTxns.push(recoveredTxn);
                 } else throw new Error('COULD_NOT_SIGN');
@@ -93,7 +89,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
                 },
             };
             statusCode = 200;
-            // total_tokens = Array.isArray(req.body.create_callbacks_on) ? req.body.create_callbacks_on : [];
         } catch (error: any) {
             if (error.message === 'COULD_NOT_SIGN') {
                 response = {

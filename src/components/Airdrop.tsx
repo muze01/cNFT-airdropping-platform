@@ -3,7 +3,6 @@ import { useEffect,useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useWallet } from '@solana/wallet-adapter-react';
 import axios from 'axios';
-
 import { Box, Center, Flex,Spacer,Heading,ButtonGroup,Table,
     Thead,
     Tbody,
@@ -29,7 +28,6 @@ import { Box, Center, Flex,Spacer,Heading,ButtonGroup,Table,
     Input,
     FormErrorMessage,
     FormHelperText,
-
 } from '@chakra-ui/react';
 import { ArrowDownIcon } from '@chakra-ui/icons'
 import formatAddresses from '../utils/functions';
@@ -90,7 +88,6 @@ const Airdrop = (props:paramType) => {
                     onClose();
                 }, 2000);
             }
-                // setOpsComplete(true);
         })
         .catch(err => console.log(err));
     }
@@ -207,46 +204,6 @@ const Airdrop = (props:paramType) => {
                                     </Td>
                                 </Tr>
                                 )}
-                                {/* <Tr>
-                                    <Td>
-                                        <Stack direction={'row'} align={'center'}>
-                                            <Flex
-                                                w={"44px"}
-                                                h={"44px"}
-                                                align={'center'}
-                                                justify={'center'}
-                                                rounded={'full'}
-                                                bg={"#fff"}
-                                            >
-                                                <Image
-                                                    borderRadius='full'
-                                                    boxSize='40px'
-                                                    src='https://bit.ly/dan-abramov'
-                                                    alt='Nft image'
-                                                />
-                                            </Flex>
-                                            <Text fontWeight={600} color={"pink.300"} fontSize={{base:"xs",md:"sm"}}>Hellow</Text>
-                                        </Stack>
-                                    </Td>
-                                    <Td textAlign={"center"}>
-                                        <Text fontWeight={600} fontSize={{base:"xs",md:"sm"}}>Hellow</Text>
-                                    </Td>
-                                    <Td textAlign={"center"}>
-                                        <Text fontWeight={600} fontSize={{base:"xs",md:"sm"}}>Hellow</Text>
-                                    </Td>
-                                    <Td>
-                                        <Button
-                                            colorScheme='pink'
-                                            aria-label='Airdrop Tokens'
-                                            size='sm'
-                                            variant='solid'
-                                            fontFamily={'heading'}
-                                            leftIcon={<ArrowDownIcon />}
-                                        >
-                                            Airdrop
-                                        </Button>
-                                    </Td>
-                                </Tr> */}
                                 <Tr>
                                     <Td>
                                         <Stack direction={'row'} align={'center'}>

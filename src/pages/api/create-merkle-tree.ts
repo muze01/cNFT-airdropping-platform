@@ -1,22 +1,21 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import {clusterApiUrl,Connection,Transaction,Keypair} from "@solana/web3.js";
 import type {Cluster,Signer} from "@solana/web3.js";
-
 import { decode } from 'bs58';
 import { Buffer } from 'buffer';
-
 import {
     getConcurrentMerkleTreeAccountSize,
     ALL_DEPTH_SIZE_PAIRS,
     ValidDepthSizePair,
   } from "@solana/spl-account-compression";
-//import { ShyftSdk, Network, TxnAction } from '@shyft-to/js';
 import axios from 'axios';
+
 type Responses = {
     success: boolean;
     message: string;
     result: any;
 };
+
 type TreeSpecsReturn = {
     max_depth: number;
     max_buffer_size: number; 
@@ -37,11 +36,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             var total_tokens:number = 0;
             var fee_payer: string = "";
 
-            // wallet_address = (typeof req.body.wallet_address === "string") ? req.body.wallet_address : '';
             wallet_address = process.env.NEXT_PUBLIC_KEY ?? "";
             total_tokens = (typeof req.body.total_tokens === "number") ? req.body.total_tokens : 0;
 
-            // total_tokens = Array.isArray(req.body.create_callbacks_on) ? req.body.create_callbacks_on : [];
             network = (typeof req.body.network === "string")?req.body.network:"mainnet-beta";
 
             const treeSpecs = getTreeSpecs(total_tokens);
@@ -203,7 +200,6 @@ function getTreeSpecs(tokensToBeMinted:number):TreeSpecsReturn
     } catch (error) {
         return {max_depth: 14,max_buffer_size: 1024, canopy_depth: 0}
     }
-    
 }
 
 export async function signAndSendTransactionWithPrivateKeys(

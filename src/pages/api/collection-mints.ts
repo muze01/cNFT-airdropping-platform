@@ -2,11 +2,9 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { createClient } from '@supabase/supabase-js';
 import { ShyftSdk, Network } from '@shyft-to/js';
 
-
 const supabaseUrl = process.env.NEXT_SUPABASE_DB_URL ?? '';
 const supabaseKey = process.env.NEXT_SUPABASE_DB_KEY ?? '';
 const supabase = createClient(supabaseUrl, supabaseKey);
-
 const shyftClient = new ShyftSdk({ apiKey: process.env.NEXT_SHYFT_API_KEY ?? '', network: Network.Mainnet });
 
 type ShyftArrayResultResponse = {
@@ -103,8 +101,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
                 result:[]
             });
     }
-    
-
 }
 
 async function pushMintsToDatabase(reference_address: string, addresses_to_monitor: string[], network: Network) {
@@ -116,7 +112,6 @@ async function pushMintsToDatabase(reference_address: string, addresses_to_monit
                 throw new Error('NO_NFT_DATA');
 
             const allOwners: object[] = nftOwners;
-            // const allOwners:object[] = [];
             for (var i = 0; i < allOwners.length; i++) {
                 const eachOwner: any = allOwners[i];
                 //fetch NFT metadata here

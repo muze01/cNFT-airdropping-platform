@@ -40,9 +40,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             throw Error('WRONG_ADDR');
         }
 
-        // console.log("here2.1");
-        // console.log(getMintsFromCandyMachine);
-        // console.log("here3");
         if (getMintsFromCandyMachine && getMintsFromCandyMachine.length > 0) {
             for (let index = 0; index < getMintsFromCandyMachine.length; index++) {
                 const nft = getMintsFromCandyMachine[index];
@@ -64,35 +61,3 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         });
     }
 }
-
-// async function pushNftDataToDatabase(reference_address: string, addresses_to_monitor: string[], network: Network):Promise<boolean> {
-//     try {
-//         if(addresses_to_monitor.length > 0)
-//         {
-//                 // var objectToBePushed = {};
-
-//                 // const mintExists = await supabase
-//                 //     .from('monitor_mints')
-//                 //     .select()
-//                 //     .eq("mint_address",nft.mint);
-
-//                 // if(mintExists.count !== null)
-//                 //     objectToBePushed = mintExists.data[0];
-
-//                 // objectToBePushed ={ ...objectToBePushed, mint_address: nft.mint, current_holder: nft.owner};
-
-//                 //  //get from DB then push
-//                 // const insertToDb = await supabase.from('monitor_mints').upsert(objectToBePushed);
-//                 // if (insertToDb.error !== null)
-//                 //     throw new Error('INSERT_TO_DB_FAILED');
-//         }
-//         else
-//         {
-//             return false;
-//         }
-//         return true;
-//     } catch (error:any) {
-//         console.log(error);
-//         return false;
-//     }
-// }

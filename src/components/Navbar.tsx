@@ -79,7 +79,7 @@ import {
                 color:"aqua"
               }}
               href={'#'}>
-              Shyft X Calyptus
+              Shyft X Calyptus X Muze
             </Button>
             {/* <Button
               as={'a'}

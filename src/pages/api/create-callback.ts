@@ -12,16 +12,6 @@ type Responses = {
     message: string;
     result: {};
 };
-// type DbData = {
-//     id?: number,
-//     created_at?: any,
-//     reference_address?: string,
-//     monitor_addresses?: {
-//         addresses: []
-//     },
-//     callback_id?:string,
-//     network?:string
-// };
 
 const shyftClient = new ShyftSdk({ apiKey: process.env.NEXT_SHYFT_API_KEY ?? '', network: Network.Mainnet });
 

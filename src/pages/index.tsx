@@ -288,7 +288,7 @@ const Home: NextPage = () => {
                     align={{ base: 'center', md: 'center' }}
                 >
                     <Text fontFamily={'customCursive'} fontSize={'sm'}>
-                        Made with love ❤️ by Shyft & Calyptus
+                        Made with love ❤️ by Shyft & Calyptus & Muze
                     </Text>
                     <Stack direction={'row'} spacing={6}>
                         <Link href={'https://shyft.to/'} isExternal>
